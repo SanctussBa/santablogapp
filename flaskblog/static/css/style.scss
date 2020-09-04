@@ -8,14 +8,14 @@ $navColor: #645474;
 $footerColor: #b4acbc;
 $containerBorderColor: #ccd4dc;
 $containerColor: #f9f1df;
-$buttonColorAlert: #f4ae8b;
+$buttonColorAlert: #82E0AA;
 $buttonColorCalm: #f7e7cd;
 
 
 // text color and fonts
 $textMonospaceFont: 'Inconsolata', monospace;
 $textMainFont: 'Roboto', sans-serif;
-$textQuote: 'Raleway Dots', cursive;
+$textQuote: 'Indie Flower', cursive;
 $mainTextColor : #38262c;
 $navTextColor: #e4dede;
 $navTextHover: #ccccd1;
@@ -210,8 +210,6 @@ body {
               }
             }
           }
-
-
         }
       }
     }
@@ -340,13 +338,20 @@ img.logo{
 }
 .dropdown-menu a{
   text-decoration: none;
-
+  &:active {
+    color: $navTextHover * 2;
+  }
+  &:focus {
+    color: $navTextHover * 2;
+  }
 }
 
 ul li:hover{
   border-bottom: solid 1px $navColor;
   background: $mainBackground;
 }
+
+
 .absolute {
   box-sizing: border-box;
   position: absolute;
