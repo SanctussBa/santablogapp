@@ -1,4 +1,4 @@
-__pycashe__/
+__pycache__/
 bin/
 build/
 develop-eggs/
@@ -12,3 +12,4 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+*.pyc
