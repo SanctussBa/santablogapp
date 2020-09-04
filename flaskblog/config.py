@@ -14,8 +14,7 @@ class Config(object):
         SQLALCHEMY_DATABASE_URI = 'postgresql://server_name:password@localhost/table_name' #need to change
     else:
         DEBUG = False
-        SECRET_KEY = os.urandom(32)
-        app.config['SECRET_KEY'] = SECRET_KEY
+        SECRET_KEY = os.environ.get('SECRET_KEY')
         SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 
