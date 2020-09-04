@@ -8,8 +8,10 @@ $navColor: #645474;
 $footerColor: #b4acbc;
 $containerBorderColor: #ccd4dc;
 $containerColor: #f9f1df;
-$buttonColorAlert: #82E0AA;
+$buttonColorAlert: #F5B7B1;
 $buttonColorCalm: #f7e7cd;
+$xBarColor: #EC7063;
+$alertColor: #82E0AA;
 
 
 // text color and fonts
@@ -253,7 +255,7 @@ body {
 
             text-decoration: none;
             color: $navTextColor;
-            font-family: 'Inconsolata', monospace;
+            font-family: $textMonospaceFont;
             font-size: 12px;
             font-weight: 100;
             &::after{
@@ -310,14 +312,14 @@ img.logo{
   .change .bar1{
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-9px, 6px);
-    background: #EC7063;
+    background: $xBarColor;
   }
 
   .change .bar2 {opacity: 0;}
   .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-8px, -8px);
-    background: #EC7063;
+    background: $xBarColor;
   }
 }
 
@@ -339,10 +341,10 @@ img.logo{
 .dropdown-menu a{
   text-decoration: none;
   &:active {
-    color: $navTextHover * 2;
+    color: $navColor * 2;
   }
   &:focus {
-    color: $navTextHover * 2;
+    color: $navColor * 2;
   }
 }
 
@@ -400,7 +402,7 @@ div.paginate {
     padding: 5px 8px;
     transition: background-color 0.5s;
     &:hover {
-      background-color: $buttonColorAlert;
+      background-color: #FADBD8;
     }
   }
 }
@@ -471,7 +473,7 @@ input[type="text"], input[type="password"]{
 
 div.alert {
   display: inline;
-  color: $buttonColorAlert;
+  color: $alertColor;
   font-size: 20px;
   font-family: $textMonospaceFont;
 
