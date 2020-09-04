@@ -14,14 +14,9 @@ class Config(object):
         SECRET_KEY = 'mysecret'
         SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:berzone@localhost/blogdata'
     else:
-        # POSTGRES = {
-        # 'user': 'postgres',
-        # 'pw': 'mypassword in postgres',
-        # 'db': 'postgres',
-        # 'host': 'localhost',
-        # 'port': '5432'
-        # }
+        DEBUG = False
+        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
         DEBUG = False
         SECRET_KEY = 'mysecret'
-        SQLALCHEMY_DATABASE_URI = ''
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
