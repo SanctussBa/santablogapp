@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if user.username == current_user.username %}
+    <h2 class="article-title" >All posts written by me: {{ posts.total }}</h2>
+    {% else %}
+    <h2 class="article-title" >All posts written by {{ user.username }}: {{ posts.total }}</h2>
+    {% endif %}
+    {% for post in posts.items %}
+        <article class="post">
+          <img class="profile-pic" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+          <div class="right">
+            <div class="article-metadata">
+              <a class="username" id="user-name" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+              <small class="date">{{ post.date_posted.strftime('%d-%m-%Y %H:%M') }}</small>
+            </div>
+            <h2><a class="title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="post-text">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+        <div class="paginate">
+        {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+          {% if page_num %}
+            {% if posts.page == page_num %}
+
+            <a class="paginate-active" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+
+            {% else %}
+
+            <a class="paginate" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+
+            {% endif %}
+          {% else %}
+            ...
+          {% endif %}
+        {% endfor %}
+        </div>
+{% endblock content %}

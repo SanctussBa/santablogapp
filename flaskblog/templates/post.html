@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="post">
+    <img class="profile-pic" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+    <div class="media-body">
+      <div class="post-title-date">
+        <h1>{{ post.author.username }}</h1>
+        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+
+      </div>
+      <h2 class="article-title">{{ post.title }}</h2>
+      <p class="article-content white-space">{{ post.content }}</p>
+      <div class="check-posts">
+        {% if post.author == current_user %}
+
+        <a class="check-all-posts" href="{{ url_for('users.user_posts', username=post.author.username) }}"> Check all my posts </a>
+        <a class="update" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
+        <!-- Button below is in JS as const modalBtn -->
+        <button class="button" id="modal-btn">Delete</button>
+
+        {% else %}
+        <a class="check-all-posts" href="{{ url_for('users.user_posts', username=post.author.username) }}"> Check all posts written by {{ post.author.username }}</a>
+        {% endif %}
+
+
+      </div>
+    </div>
+
+  </article>
+  <!-- Modal -->
+  <!-- In JS it is the whole section which triggers to change display to block -->
+  <div class="modal" id="my-modal" role="dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="close">&times;</span>
+        </button>
+        <h5 class="modal-title" >Are you sure you want to delete this post?</h5>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modal-keepit" class="button" data-dismiss="modal">Keep it</button>
+        <form id="modal-delete" action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+          <input type="submit" id="input-delete" value="Delete">
+        </form>
+      </div>
+    </div>
+
+  </div>
+<script type="text/javascript" src="../static/main.js"></script>
+{% endblock content %}

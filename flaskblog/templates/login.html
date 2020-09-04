@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend>Log In</legend>
+                <div class="form-group">
+                  <div class="form-items">
+                    {{ form.email.label}}
+                  </div>
+                    {% if form.email.errors %}
+                      <div class="form-items">
+                        {{ form.email}}
+                      </div>
+
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                      <div class="form-items">
+                        {{ form.email}}
+                      </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                  <div class="form-items">
+                    {{ form.password.label}}
+                  </div>
+                    {% if form.password.errors %}
+                      <div class="form-items">
+                        {{ form.password}}
+                      </div>
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                      <div class="form-items">
+                        {{ form.password }}
+                      </div>
+                    {% endif %}
+                </div>
+
+            </fieldset>
+            <div class="btn">
+                {{ form.submit }}
+
+            </div>
+        </form>
+    </div>
+    <div>
+        <small>
+            Need An Account? <a href="{{ url_for('users.register') }}">Sign Up Now</a>
+        </small>
+    </div>
+{% endblock content %}

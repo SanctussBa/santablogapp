@@ -1,0 +1,818 @@
+
+
+
+// Background Colors
+$mainBackground : #fafaf5;
+
+$navColor: #645474;
+$footerColor: #b4acbc;
+$containerBorderColor: #ccd4dc;
+$containerColor: #f9f1df;
+$buttonColorAlert: #f4ae8b;
+$buttonColorCalm: #f7e7cd;
+
+
+// text color and fonts
+$textMonospaceFont: 'Inconsolata', monospace;
+$textMainFont: 'Roboto', sans-serif;
+$textQuote: 'Raleway Dots', cursive;
+$mainTextColor : #38262c;
+$navTextColor: #e4dede;
+$navTextHover: #ccccd1;
+
+:root {
+  --modal-duration: 1s;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+  background: $mainBackground;
+
+  color: $mainTextColor;
+
+  div.page-container {
+    display: flex;
+    flex-direction: column;
+    font-family: $textMainFont;
+    height: 100vh;
+    position: relative;
+// ----------------------------------------------------HEADER
+    header {
+      background: $navColor;
+      nav{
+        width: 100%;
+        div.container {
+
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          justify-content: space-around;
+          padding-left: 60px;
+          @media (max-width: 750px){
+            padding-left: 20px;
+          }
+          padding-right: 30px;
+          @media (max-width: 950px){
+            justify-content: flex-start;
+          }
+          // ---------------hamburger
+          div.menu {
+
+            display: block;
+
+
+            @media (max-width: 950px){
+              display : none;
+            }
+
+            div.link-container{
+              justify-content: flex-end;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              a.nav-links {
+                padding-right: 30px;
+                padding-left: 30px;
+                padding-bottom: 10px;
+                text-decoration: none;
+                color: $navTextColor;
+                font-family: 'Inconsolata', monospace;
+                font-weight: 200;
+                &::after{
+                  content: "";
+                  display: block;
+                  width:0;
+                  height: 0.1px;
+                  background: $navTextHover;
+                  transition: width .3s;
+                }
+                &:hover::after {
+                  color: $navTextHover * 2;
+                  width:100%;
+                }
+              }
+            }
+          }
+        }
+      }
+      div.welcome-user {
+        text-align: center;
+        padding: 20px 30px;
+        h1, q{
+          color: $navTextColor;
+          font-family: $textQuote;
+          font-size: 16px;
+          font-weight: 200;
+        }
+      }
+    }
+    // ------------------------------------------------CONTENT
+    main {
+      @media (max-width: 950px) {
+        width: 90vw;
+      }
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+      height: 100vh;
+      position: relative;
+      margin-bottom: 200px;
+      div {
+        width: 100%;
+
+        div{
+          article.post {
+            display: flex;
+            flex-direction: row;
+            @media (max-width: 700px){
+              flex-direction: column;
+            }
+            background-color: $containerColor;
+            margin-top: 15px;
+
+
+
+            div.left {
+              display: flex;
+              flex-direction: column;
+              width: 150px;
+              padding: 20px;
+              @media (max-width: 700px){
+                padding-top: 10px;
+                padding-bottom: 0;
+                text-align: center;
+                flex-direction: row;
+                align-items: center;
+
+              }
+              img.profile-pic {
+                border-radius: 50%;
+                height: 80px;
+                width: 80px;
+
+              }
+              a.username {
+                text-decoration: none;
+                font-family: $textMonospaceFont;
+                font-size: 22px;
+                padding: 20px 10px;
+                text-align: center;
+                color: $navColor;
+
+                &::after{
+                  content: "";
+                  display: block;
+                  width:0;
+                  height: 0.1px;
+                  background: $navColor;
+                  transition: width .3s;
+                }
+                &:hover::after {
+                  color: $navColor * 1.5;
+                  width:100%;
+                }
+
+              }
+            }
+            div.right {
+              display: flex;
+              flex-direction: column;
+              padding: 20px;
+              h2 {
+                font-family: $textMonospaceFont;
+                font-size: 26px;
+                padding-bottom: 10px;
+                a.title {
+                  text-decoration: none;
+                  color: $navColor;
+                  &:hover {
+                    color: $navColor * 1.5;
+                  }
+                }
+              }
+              small.date {
+                font-family: $textMonospaceFont;
+              }
+              p.post-text {
+                font-family: $textMainFont;
+                font-size: 14px;
+                padding-top: 10px;
+                white-space: pre-wrap;
+                white-space: pre-line;
+              }
+            }
+          }
+
+
+        }
+      }
+    }
+    // ------------------------------------------------FOOTER
+
+    footer {
+      @media (max-width: 750px) {
+        display: none;
+      }
+      position: absolute;
+      bottom: 0;
+      background-color: $navColor;
+      width: 100%;
+      position: fixed;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 50px;
+
+      div.footer-div {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        div.footer-left{
+          flex-grow: 1;
+          a {
+            img{
+              -webkit-filter: brightness(3);
+              filter: brightness(5);
+            }
+          }
+        }
+        div.footer-right{
+          flex-grow: 2;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          a.nav-links {
+
+            text-decoration: none;
+            color: $navTextColor;
+            font-family: 'Inconsolata', monospace;
+            font-size: 12px;
+            font-weight: 100;
+            &::after{
+              content: "";
+              display: block;
+              width:0;
+              height: 0.1px;
+              background: $navTextHover;
+              transition: width .3s;
+            }
+            &:hover::after {
+              color: $navTextHover * 2;
+              width:100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+img.logo{
+  -webkit-filter: brightness(5);
+  filter: brightness(5);
+}
+@media (max-width: 750px) {
+
+  img.logo {
+    height: 40px;
+    width: auto;
+    margin-top: 20px;
+
+  }
+}
+// ---------------------------------------------HAMBURGER on navigation
+
+@media (max-width: 950px){
+  .wrapper {
+    @media (min-width: 950px) {
+      display: none;
+    }
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background: #D7BDE2;
+    margin:6px 0;
+    transition: 0.4s;
+  }
+
+  .change .bar1{
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+    background: #EC7063;
+  }
+
+  .change .bar2 {opacity: 0;}
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background: #EC7063;
+  }
+}
+
+.dropdown-menu ul li {
+
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+  font-size: 16px;
+  color: $navColor;
+  display: block;
+  background: $buttonColorCalm;
+  font-family: $textMonospaceFont;
+  box-sizing: border-box;
+  transition: background 0.5s;
+  transition: border-bottom 0.3s;
+  border-bottom: solid 1px $mainBackground;
+}
+.dropdown-menu a{
+  text-decoration: none;
+
+}
+
+ul li:hover{
+  border-bottom: solid 1px $navColor;
+  background: $mainBackground;
+}
+.absolute {
+  box-sizing: border-box;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+}
+.dropdown-menu {
+  display: none;
+
+
+}
+.dropdown-menu-active {
+  display: block;
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  background: $mainBackground;
+  position: relative;
+  top: 20px;
+  left: -40%;
+  z-index: 1;
+}
+
+
+// ----------------------------------------------------PAGINATE
+div.paginate {
+  height: 150px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  a.paginate-active {
+    text-decoration: none;
+    font-family: $textMonospaceFont !important;
+    font-size: 26px !important ;
+    color: $mainTextColor;
+    padding: 5px 8px;
+    background-color: $buttonColorAlert;
+    border-radius: 30%;
+  }
+  a.paginate {
+    text-decoration: none;
+    color: $navColor;
+    font-family: $textMonospaceFont !important;
+    font-size: 26px !important ;
+    background-color: $buttonColorCalm;
+    border-radius: 30%;
+    padding: 5px 8px;
+    transition: background-color 0.5s;
+    &:hover {
+      background-color: $buttonColorAlert;
+    }
+  }
+}
+
+// --------------------LOGIN.HTML----REGISTER.HTML-------------------
+
+div.content-section {
+  display: flex;
+  flex-direction: column;
+  background-color: $containerColor;
+  margin-top: 15px;
+
+
+}
+
+form {
+  padding: 30px;
+
+}
+
+fieldset {
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  border-top: solid 3px $mainBackground;
+  legend {
+
+    margin: 0;
+    font-family: $textMonospaceFont;
+    text-align: left;
+    padding-bottom: 30px;
+    font-size: 26px;
+    color: $navColor;
+
+  }
+  div.form-group{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    @media (max-width: 750px){
+      padding: 0;
+    }
+    div.form-items {
+      padding-top: 10px;
+    }
+  }
+}
+
+label {
+  font-family: $textMainFont;
+  font-size: 18px;
+  color: $navColor;
+  padding-top: 10px;
+}
+
+input[type="text"], input[type="password"]{
+  width: 60%;
+  @media (max-width: 750px){
+    width: 100%;
+  }
+  border-radius: 4px;
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+  font-family: $textMainFont;
+}
+
+div.alert {
+  display: inline;
+  color: $buttonColorAlert;
+  font-size: 20px;
+  font-family: $textMonospaceFont;
+
+}
+
+input[type="submit"], button.button, a.update, a.check-all-posts{
+  background-color: $buttonColorAlert;
+  transition: background-color 0.8s;
+  margin: 20px;
+
+  width: 20%;
+  @media (max-width: 750px){
+    width: auto;
+    margin: 5px;
+  }
+  border-radius: 4px;
+  font-size: 18px;
+
+  font-family: $textMainFont;
+  padding: 5px;
+  color: $navColor;
+  border: solid 2px $buttonColorAlert;
+
+  &:hover {
+    background-color: $buttonColorCalm;
+    border: solid 2px $buttonColorAlert;
+  }
+}
+small {
+  font-family: $textMonospaceFont;
+  font-size: 14px;
+}
+
+// --------------------ACCOUNT.HTML----------------------------------
+
+div.media{
+  display: flex;
+  flex-direction: row;
+  padding: 10px 10px 0px 10px;
+  div.media-body{
+
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    margin: 20px;
+    @media (max-width: 550px) {
+      margin: 20px 10px 20px 5px;
+    }
+
+    h2.account-heading{
+      font-family: $textMonospaceFont;
+      font-size: 32px;
+      color: $navColor;
+      padding-bottom: 15px;
+    }
+    p.text-secondary{
+      font-family: $textMonospaceFont;
+      word-break: break-all;
+    }
+  }
+}
+img.profile-pic {
+  border-radius: 50%;
+  height: 125px;
+  width: 125px;
+  margin: 20px;
+  padding: 10px;
+}
+
+div.update-picture {
+  font-size: 16px;
+  margin-top: 10px;
+}
+input[type="file"]{
+  width: 100%;
+  padding-top: 15px;
+  display: inline;
+
+  font-family: $textMonospaceFont;
+  color: $navColor;
+  border-radius: 5px;
+
+}
+
+div.invalid-feedback {
+  span{
+    color: red;
+    font-size: 14px;
+  }
+}
+
+// --------------------create_post.HTML----------------------------------
+
+textarea{
+  border: none;
+  min-height: 200px;
+  text-align: left;
+  padding: 20px;
+  font-family: $textMainFont;
+  font-size: 16px;
+}
+// ---------------------post.html-------------------------------------
+h2.article-title {
+  color: $navColor;
+  font-family: $textMonospaceFont;
+}
+
+p.white-space {
+  white-space: pre-line;
+  white-space: pre-wrap;
+}
+div.media-body {
+  padding: 20px;
+  div.post-title-date {
+    padding: 20px;
+    border: solid 5px $mainBackground;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 20px;
+    h1 {
+      font-family: $textMonospaceFont;
+      font-size: 32px;
+      color: $navColor;
+      padding-bottom: 15px;
+      padding-right: 15px;
+
+    }
+
+
+  }
+  h2.article-title {
+    color: $navColor;
+    font-family: $textMonospaceFont;
+  }
+  p.article-content {
+    margin: 20px;
+    color: $mainTextColor;
+
+  }
+  div.check-posts{
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 400px){
+      flex-direction: column;
+    }
+    justify-content: space-between;
+    border: solid 5px $mainBackground;
+    border-radius: 4px;
+
+  }
+
+}
+article.post {
+  img.profile-pic {
+    @media (max-width: 750px){
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+a.check-all-posts{
+  font-size: 16px;
+  text-decoration: none;
+  flex-grow: 2;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: $buttonColorCalm;
+  border-color: $buttonColorCalm;
+  color: $navColor;
+  transition: background-color 0.8s;
+  max-width: 60%;
+  @media (max-width: 400px){
+    max-width: 100%;
+  }
+  &:hover {
+    background-color: $mainBackground;
+    border-color: $buttonColorCalm;
+
+  }
+}
+
+a.update {
+  font-size: 16px;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+  background-color: #A9DFBF;
+  border-color: #A9DFBF;
+  transition: background-color 0.8s;
+  &:hover{
+    background-color: #EAFAF1;
+    border-color: #A9DFBF;
+  }
+}
+button.button {
+  font-size: 16px;
+}
+a#user-name {
+  text-decoration: none;
+  font-family: $textMonospaceFont;
+  font-size: 22px;
+  color: $navColor;
+  &:hover {
+    color: $buttonColorAlert;
+  }
+}
+small.date {
+  padding-left: 20px;
+}
+// --------------------------------------------MODAL----DELETE POST?--------
+
+div.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.3);
+  div.modal-content{
+    margin: 10% auto;
+    width: 40%;
+    @media (max-width: 750px){
+      width: 80%;
+    }
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    div.modal-header {
+      margin: 0;
+      background: $buttonColorCalm;
+      padding: 30px 15px;
+      color: white;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      h5.modal-title {
+        font-family: $textMonospaceFont;
+        font-size: 18px;
+        text-align: center;
+        color: $mainTextColor;
+      }
+    }
+    div.modal-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      height: auto;
+      background: $mainBackground;
+      padding: 10px;
+      color: white;
+      text-align: center;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}
+
+button#modal-keepit.button {
+  height: 30px;
+  width: auto;
+  padding: 0 10px;
+  margin: 0;
+  margin-right: 20px;
+  color: $mainTextColor;
+  background-color: #A9DFBF;
+  border-color: #A9DFBF;
+  transition: background-color 0.8s;
+  &:hover{
+    background-color: #EAFAF1;
+    border-color: #A9DFBF;
+  }
+}
+
+input#input-delete {
+  height: 30px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: $mainTextColor;
+  background-color: $buttonColorAlert;
+  border-color: $buttonColorAlert;
+  transition: background-color 0.8s;
+  &:hover{
+    background-color: $buttonColorCalm;
+    border-color: $buttonColorAlert;
+  }
+}
+
+form#modal-delete {
+  padding: 0;
+  margin: 0;
+  width: 113px;
+}
+button.close {
+  color: $buttonColorAlert;
+
+  font-size: 30px;
+  background: none;
+  border: none;
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+  &:active {
+    border: none;
+  }
+}
+@keyframes modalopen {
+  from{
+    opacity:0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// -------------------------------USER--POSTS------------------------
+.about-wrap{
+  border: solid 10px white;
+  h2.article-title {
+    padding: 20px;
+    text-align: center;
+  }
+}
+span.underline {
+  text-decoration: underline;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.about-body {
+
+  p {
+    padding: 20px;
+    font-family: $textMonospaceFont;
+    line-height: 1.5;
+  }
+  h5 {
+    text-align: center;
+    padding: 10px;
+  }
+
+}
