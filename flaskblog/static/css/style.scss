@@ -212,7 +212,8 @@ body {
                 font-size: 14px;
                 padding-top: 10px;
                 white-space: pre-wrap;
-                white-space: pre-line;
+                word-break: break-all;
+                // white-space: pre-line;
               }
             }
           }
