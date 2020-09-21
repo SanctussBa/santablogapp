@@ -828,3 +828,25 @@ span.underline {
   }
 
 }
+.selectfield {
+  width: 60%;
+  height: 40px;
+  font-family: $textMainFont;
+  font-size: 18px;
+  option {
+    font-family: $textMainFont;
+    font-size: 18px;
+    &:hover {
+      background-color: $containerColor;
+    }
+  }
+}
+#bottom-padding {
+  padding-left: 30px;
+  margin-bottom: 60px;
+  display: flex;
+  @media (max-width: 750px){
+    justify-content: center;
+  }
+
+}

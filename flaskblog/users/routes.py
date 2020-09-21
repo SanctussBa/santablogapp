@@ -60,10 +60,11 @@ def account():
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
 
     if form.validate_on_submit(): #When "submit" button is pressed
-        if form.picture.data: # and in our html forms is new data about picture
-            picture_file = save_picture(form.picture.data) # Create a variable which is executig in function def save_picture(form-picture): in utils.property
-            #It takes that new uploaded picture from html form and changes according to save_picture() function
-            current_user.image_file = picture_file# now we change current users picture name to newly created picture file name.
+        if form.picture.data != "0":
+
+            picture_name = form.picture.data + ".jpg"
+            current_user.image_file = picture_name
+
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
