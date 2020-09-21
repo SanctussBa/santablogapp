@@ -3,8 +3,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 from flaskblog import db, bcrypt
 from flaskblog.models import User, Post
 from flaskblog.users.forms import RegistrationForm, LoginForm, UpdateAccountForm
-
-from flaskblog.users.utils import save_picture
 from flaskblog.static.quotes import quotes
 import random
 users = Blueprint('users', __name__)
