@@ -842,8 +842,9 @@ span.underline {
   }
 }
 #bottom-padding {
+  padding-top: 20px;
   padding-left: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   display: flex;
   @media (max-width: 750px){
     justify-content: center;
